@@ -151,13 +151,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // BUBBLE-TEXT
         let bubble = SCNText(string: text, extrusionDepth: CGFloat(bubbleDepth))
-        var font = UIFont(name: "Futura", size: 0.15)
+        var font = UIFont(name: "Futura", size: 0.2)
         font = font?.withTraits(traits: .traitBold)
         bubble.font = font
         bubble.alignmentMode = kCAAlignmentCenter
         bubble.firstMaterial?.diffuse.contents = UIColor.blue
         bubble.firstMaterial?.specular.contents = UIColor.green
-        bubble.firstMaterial?.isDoubleSided = true
+        bubble.firstMaterial?.isDoubleSided = false
         // bubble.flatness // setting this too low can cause crashes.
         bubble.chamferRadius = CGFloat(bubbleDepth)
         
@@ -167,7 +167,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Centre Node - to Centre-Bottom point
         bubbleNode.pivot = SCNMatrix4MakeTranslation( (maxBound.x - minBound.x)/2, minBound.y, bubbleDepth/2)
         // Reduce default text size to fit screen
-        bubbleNode.scale = SCNVector3Make(0.1, 0.1, 0.1)
+        bubbleNode.scale = SCNVector3Make(0.15, 0.15, 0.15)
         
         // CENTRE POINT NODE/Anchor
         let sphere = SCNSphere(radius: 0.005)
